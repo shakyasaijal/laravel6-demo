@@ -50,6 +50,37 @@
 
 ```
 
+## Email Verification
+
+```
+    # .env
+    
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.googlemail.com
+    MAIL_PORT=465
+    MAIL_USERNAME=youremailaddress
+    MAIL_PASSWORD=youremailpassword
+    MAIL_ENCRYPTION=ssl
+
+    # User Model
+
+    use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+    class User extends Authenticatable implements MustVerifyEmail
+    {
+
+    }
+
+    # Routes
+
+    Auth::routes(['verify' => true]);
+    
+    Route::get('/profile', function() {
+        return 'This is profile';
+    })->middleware('verified');
+
+```
+
 ## Documentation
 
 [Laravel](https://laravel.com/docs/6.x)
