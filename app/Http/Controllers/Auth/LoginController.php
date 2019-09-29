@@ -86,5 +86,28 @@ class LoginController extends Controller
         auth()->login($user); 
         return $user;    
     }
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')
+        ->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $google = Socialite::driver('google')->user();
+
+        
+        $user = User::where('provider_id', $google->id)->first();
+        if (!$user) {
+            $user = User::create([
+                'name'     => $google->name,
+                'email'    => $google->email,
+                'provider' => 'google',
+                'provider_id' => $google->id
+            ]);
+        }
+        auth()->login($user); 
+        return $user;    
+    }
 
 }

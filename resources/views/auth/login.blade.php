@@ -75,6 +75,10 @@
     <div class="col-md-8 offset-md-4">
        <a href="{{ route('github') }}" class="btn btn-primary"><i class="fa fa-facebook"></i> Github</a>
    </div>
+   <div class="form-group row mb-0">
+    <div class="col-md-8 offset-md-4">
+       <a href="{{ route('google') }}" class="btn btn-primary"><i class="fa fa-facebook"></i> Google</a>
+   </div>
    
                 </div>
             </div>
