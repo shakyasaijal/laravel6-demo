@@ -12,3 +12,6 @@ Route::get('/profile', function() {
 })->middleware('verified');
 
 Route::resource('/posts', 'PostsController');
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

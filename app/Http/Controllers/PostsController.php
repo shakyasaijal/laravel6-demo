@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Http\Resources\PostResource;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index() : PostResource
     {
         // $post = Post::orderBy('id','desc')->take(1)->get();
         // $post = DB::select('Select * from posts');
