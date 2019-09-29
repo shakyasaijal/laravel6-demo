@@ -15,3 +15,7 @@ Route::resource('/posts', 'PostsController');
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('facebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/github', 'Auth\LoginController@redirectToGithub')->name('github');
+Route::get('login/github/callback', 'Auth\LoginController@handleGithubCallback');
+

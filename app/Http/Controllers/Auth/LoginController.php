@@ -63,4 +63,28 @@ class LoginController extends Controller
         return $user;    
     }
 
+    public function redirectToGithub()
+    {
+        return Socialite::driver('github')
+        ->redirect();
+    }
+
+    public function handleGithubCallback()
+    {
+        $github = Socialite::driver('github')->user();
+
+        
+        $user = User::where('provider_id', $github->id)->first();
+        if (!$user) {
+            $user = User::create([
+                'name'     => $github->name,
+                'email'    => $github->email,
+                'provider' => 'github',
+                'provider_id' => $github->id
+            ]);
+        }
+        auth()->login($user); 
+        return $user;    
+    }
+
 }
